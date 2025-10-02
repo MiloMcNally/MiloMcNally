@@ -1,6 +1,6 @@
-﻿<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MiloMcNally.com</title>
@@ -18,9 +18,19 @@
             color: #fff;
             padding: 1rem 0;
             text-align: center;
+            position: relative; /* allows us to place the back button inside */
         }
         header h1 {
             margin: 0;
+        }
+        .back-button {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
         }
         nav {
             margin-top: 0.5rem;
@@ -54,56 +64,159 @@
             color: #fff;
             margin-top: 2rem;
         }
+        /* Dropdown styling */
+        .dropdown {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .dropdown button {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background: #fff;
+            color: #333;
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: #333;
+        }
+        .dropdown-content a:hover {
+            background: #f1f1f1;
+        }
     </style>
 </head>
 <body>
     <header>
+        <a href="index.html" class="back-button">← Back</a>
         <h1>MiloMcNally.com</h1>
-       
+
+        <!-- Jump to Lesson Dropdown -->
+        <div class="dropdown">
+            <button id="jumpBtn">Jump to Lesson ▼</button>
+            <div id="jumpDropdown" class="dropdown-content">
+                <a href="#sound">Sound & Pitch</a>
+                <a href="#notes">Notes</a>
+                <a href="#scales">Scales</a>
+            </div>
+        </div>
     </header>
 
-   
-</body>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Music Theory</title>
-  <style>
-    body { font-family: Arial, sans-serif; background: #ffffff; color: #000000; margin: 0; padding: 2rem; }
-    .container { max-width: 780px; margin: 0 auto; }
-    h1 { font-size: 2rem; margin-bottom: 1rem; }
-    h2 { margin-top: 1.5rem; }
-    p { line-height: 1.6; margin: 0.6rem 0; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Music Theory</h1>
+    <script>
+        const btn = document.getElementById('jumpBtn');
+        const dropdown = document.getElementById('jumpDropdown');
 
-    <p>To understand music theory we first have to understand that:</p>
+        btn.addEventListener('click', () => {
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        });
 
-    <p>✨ Music is just nice sounds. ✨</p>
-
-    <p>Everything in music essentially comes back to the fact that music sounds good. No matter how complicated it may seem, music is about creativity and feeling. If it sounds good, you’re doing something right.</p>
-
-    <p>This leads into the first proper lesson.</p>
-
-    <h2>Sound &amp; Pitch</h2>
-
-    <p>Sound is made of waves through the air. The speed of the wave makes the sound higher or lower. We measure this by the amount of waves per second or “frequency.” This unit of measurement is called “Hertz” (hz).</p>
-
-    <p>We call this “Pitch” and for music we have named 12 of these pitches. Despite there being a wide range of frequency we can hear. There is no need to name any more pitches. To explain this further we’ll look at “A”.</p>
-
-    <p>The pitch we hear at 440hz has been called “A.”</p>
-
-    <p>If you divide that by 2 to 220hz our brains also hear “A.” So too if you keep halving. So 110hz = “A”, 55hz = “A” and so on.</p>
-
-    <p>This also works when doubling. 880hz = “A”, 1760hz = “A” and so on.</p>
-
-    <p>So there is no reason to name any more pitches because to our ears they loop back around to the beginning.</p>
-
-    <p>The distance between each of these loops is called an “Octave” which we have divided into 12 and named these divisions “Notes”. To understand the naming system of the notes we have to move to our next lesson.</p>
-  </div>
+        window.addEventListener('click', e => {
+            if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
 
+<div class="container">
+  
+	<p style="text-align:center; font-size:3em; font-weight:bold;">Music Theory</p>
+
+	<p>To understand music theory we first have to understand that:</p>
+
+	<p style="text-align:center; font-size:2em;"><strong>✨ Music is just nice sounds. ✨</strong></p>
+
+	<p>Everything in music essentially comes back to the fact that music sounds good. No matter how complicated it may seem, music is about creativity and feeling. If it sounds good, you’re doing something right.</p>
+	
+<p>This leads into the first proper lesson.</p>
+
+<hr style="margin:2rem 0; border:none; border-top:1px solid #ccc;">
+
+
+<p id="sound" style="text-align:center; font-size:3em; font-weight:bold;">Sound & Pitch</p>
+
+<p>Sound is made of waves through the air.</p>
+
+	<p>The speed of the wave makes the sound higher or lower. We measure this by the amount of waves per second or “frequency.” This unit of measurement is called <strong>“Hertz”</strong> (hz).</p>
+
+<img src="images/wave.jpg" alt="Wave" style="display:block; max-width:100%; height:auto; margin:1rem 0;">
+
+
+ <p>We call this <strong>“Pitch”</strong> and for music we have named 12 of these pitches. Despite there being a wide range of frequency we can hear, there is no need to name any more pitches. To explain this further we’ll look at “A”.</p>
+
+ <p>The pitch we hear at 440hz has been called “A.”</p>
+
+ <p>If you divide that by 2 to 220hz our brains also hear “A.”</p>
+
+ <p>So too if you keep halving. So 110hz = “A”, 55hz = “A” and so on.</p>
+
+ <p>This also works when doubling. 880hz = “A”, 1760hz = “A” and so on.</p>
+
+<img src="images/doubling.jpg" alt="doubling" style="display:block; max-width:100%; height:auto; margin:1rem 0;">
+ 
+
+<p>So there is no reason to name any more pitches because to our ears they loop back around to the beginning.</p>
+
+<p>The distance between each of these loops is called an <strong>“Octave”</strong> which we have divided into 12 and named these divisions <strong>“Notes”</strong>. The naming system of the notes will be explained over the next few lessons.</p>
+
+<hr style="margin:2rem 0; border:none; border-top:1px solid #ccc;">
+
+<p id="notes" style="text-align:center; font-size:3em; font-weight:bold;">Notes</p>
+
+ <p>The pitches we learned about previously are more commonly known as <strong>“notes.”</strong> There are 12 notes in total. 7 <strong>natural</strong> notes and 5 <strong>accidentals</strong> (The ones with the # and ♭). This is where the first bit of memorisation comes in.</p> 
+
+<img src="images/notes.jpg" alt="notes" style="display:block; max-width:100%; height:auto; margin:1rem 0;">
+
+
+<p>Each of these notes are the same distance from each other. I will be referring to this distance as a <strong>“half step.”</strong></p> 
+
+<p>You’ll notice that some of the notes have 2 names; these are commonly referred to as the <strong>“sharps”</strong> (#) or <strong>“flats”</strong> (♭). It should be noted that there is nothing special or different about these notes. Sharp means up a half step, and flat means down a half step.</p>
+
+<img src="images/flatsharp1.jpg" alt="flatsharp1" style="display:block; max-width:100%; height:auto; margin:1rem 0;">
+
+<p>Also</p>
+
+<img src="images/flatsharp2.jpg" alt="flatsharp2" style="display:block; max-width:100%; height:auto; margin:1rem 0;">
+
+
+ <p>It’s simply a naming system to help us not have the same letter notes in our scales.</p>
+
+<hr style="margin:2rem 0; border:none; border-top:1px solid #ccc;">
+
+<p id="scales" style="text-align:center; font-size:3em; font-weight:bold;">Scales</p> 
+
+<p>It’s not the notes themselves that sound musical, but rather the distance between them. All 12 notes played in sequence (The chromatic scale) doesn’t really make you feel much. So we made more scales with different spacings that have different feelings. We will focus on just 1 for now:</p>
+
+<p style="text-align:center; font-size:2em; font-weight:bold;">The Major scale</p>
+
+ <p>Now we are starting to skip notes. I will be referring to this as a <strong>“whole step”.</strong></p>
+
+<img src="images/wholestep.jpg" alt="wholestep" style="display:block; max-width:100%; height:auto; margin:1rem 0;">
+
+ <p><strong>As said before, scales are not the notes, they are the steps between them.</strong> So the major scale steps are: Whole, whole, half, whole, whole, whole, and a half step brings us back to the start.</p>
+
+<img src="images/majorscale.jpg" alt="majorscale" style="display:block; max-width:100%; height:auto; margin:1rem 0;">
+
+ <p>You can start this combination of steps on any note and, while it will sound higher or lower, everything else will sound the same.</p>
+
+ <p>Thats all for now. Stay tuned.</p>	
+
+
+  </div>
+</body>
+</html>
