@@ -466,6 +466,32 @@
 
 
 
+
+<button onclick="window.scrollTo({ top: 0, behavior: 'smooth' });"
+        style="
+          position: fixed;
+          bottom: 20px;
+          left: 20px;
+          background-color: #444;
+          color: white;
+          border: none;
+          padding: 10px;
+          border-radius: 50%;
+          cursor: pointer;
+          opacity: 0.7;
+          transition: opacity 0.3s, transform 0.2s;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        "
+        onmouseover="this.style.opacity=1; this.style.transform='scale(1.1)'"
+        onmouseout="this.style.opacity=0.7; this.style.transform='scale(1)'"
+        aria-label="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24" height="24">
+    <path d="M12 4l-8 8h5v8h6v-8h5z"/>
+  </svg>
+</button>
+
+	
   </div>
 </body>
 </html>
+
